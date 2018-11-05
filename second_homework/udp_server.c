@@ -17,7 +17,7 @@ int main(void)
 	int sockfd;
 	struct sockaddr_in server_addr, client_addr;
 	int sin_size, num;
-	char msg[MAXDATA];
+	char msg[MAXDATA], rev_msg[MAXDATA];
 	
 	//建立socket
 	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -57,14 +57,19 @@ int main(void)
 		
 		msg[num] = '\0';
 		
-
+		
 		printf("You have been connected from %s : %d \tmsg : %s\n", 
 			    inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port),msg);
 				
 		if(!strcmp(msg, "exit"))
 			break;
 		
-		sendto(sockfd, msg, sizeof(msg), 0, (struct sockaddr*)&client_addr, sin_size);
+		//反转字符串
+		for(int i=0; i < num; i++)
+			rev_msg[i] = msg[num -i -1];
+		rev_msg[num] = '\0';
+		
+		sendto(sockfd, rev_msg, sizeof(rev_msg), 0, (struct sockaddr*)&client_addr, sin_size);
 		
 	}
 	
