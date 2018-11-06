@@ -78,7 +78,6 @@ int main(int argc, char *argv[])
 			printf("you has been exit.\n");
 		    break;
 		}
-		
 		//接收数据
 		numbytes = recv(sockfd, recvbuf, MAXDATA, 0);
 		if(numbytes == -1)
