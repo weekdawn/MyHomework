@@ -1,3 +1,13 @@
+/*
+*Name:multithread_client.c
+*
+*Function:As a multithread client
+*
+*Athor:weekdawn
+*
+*Time:2018.11.09 17:20
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
