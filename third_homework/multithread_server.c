@@ -118,7 +118,7 @@ void *start_routine(void *arg)
 void process_cli(int connect_fd, struct sockaddr_in client)
 {
 	int recv_num;
-	char recvbuf[MAXDATA], sendbuf[MAXDATA], cli_name[MAXDATA];//接收数据，发送数据，客户端名称
+	char recvbuf[MAXDATA], sendbuf[MAXDATA], allbuf[MAXDATA], cli_name[MAXDATA];//接收数据，发送数据，客户端名称
 	int index = 0;//保存客户输入字符串的长度，用TSD进行保护
 	
 	//创建线程专用数据TSD
@@ -142,25 +142,37 @@ void process_cli(int connect_fd, struct sockaddr_in client)
 	while(recv_num = recv(connect_fd, recvbuf, MAXDATA,0))
 	{
 		recvbuf[recv_num] = '\0';		
+		printf("00\n");
+
 		
 		if(!strcmp(recvbuf,"exit"))
 		{
-			printf("%s has been exit.\nAll receive data(%s):%s\n\n", cli_name, cli_name, sendbuf);
+			printf("%s has been exit.\nAll receive data(%s):%s\n\n", cli_name, cli_name, allbuf);
 		    break;
-		}
+		}	
+		printf("11\n");
 		
 		printf("Receive client(%s) message(%d): %s\n", cli_name, recv_num, recvbuf);
+		
+		printf("22\n");
+		//反转接收到的字符串
+		for(int i=0; i < recv_num; i++)
+			sendbuf[i] = recvbuf[recv_num -i -1];
+		
+		sendbuf[recv_num] = '\0';
+
+		printf("33\n");
+		send(connect_fd, sendbuf, strlen(sendbuf), 0);
 		
 		//存储TSD数据
 		pthread_setspecific(key, &index);
 		for(int i=0; i < recv_num; i++)
 		{
-			sendbuf[*(int *)pthread_getspecific(key)] = recvbuf[i];
+			allbuf[*(int *)pthread_getspecific(key)] = recvbuf[i];
 			index = *(int *)pthread_getspecific(key) + 1;
 		}
-		sendbuf[index] = '\0';
-		
-		send(connect_fd, sendbuf, strlen(sendbuf), 0);
+		allbuf[index] = '\0';	
+		printf("44\n");
 	}
 	//删除线程专用数据TSD
 	pthread_key_delete(key);
