@@ -1,3 +1,13 @@
+/*
+*Name:multithread_server.c
+*
+*Function:the multiprocess server.
+*
+*Author:weekdawn
+*
+*Time:2018.11.08 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
