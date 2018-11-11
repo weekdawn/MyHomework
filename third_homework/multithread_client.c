@@ -1,9 +1,10 @@
 /*
 *Name:multithread_client.c
 *
-*Function:As a multithread client
+*Function:As a multithread client, connect to the server, first send client's name, then 
+*send message to the server, receive the msg from server. input "exit" to quit.
 *
-*Athor:weekdawn
+*Author:weekdawn
 *
 *Time:2018.11.09 17:20
 */

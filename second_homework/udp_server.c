@@ -1,3 +1,14 @@
+/*
+*Name:udp_server.c
+*
+*Function:As a simple udp server, print the client's ip and ports, receive the string from
+*client, then reverse it and send back to the client.
+*
+*Author:weekdawn
+*
+*Time:2018.11.05
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

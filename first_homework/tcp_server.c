@@ -1,3 +1,13 @@
+/*
+*Name:tcp_server.c
+*
+*Function:As a simple tcp server, accept the client's connection, and print it's ip and port.
+*
+*Author:weekdawn
+*
+*Time:2018.11.05
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,3 +1,14 @@
+/*
+*Name:udp_client.c
+*
+*Function:As a simple udp client, read ip from command line, conmmunicate with the server.
+*print the server's response.
+*
+*Author:weekdawn
+*
+*Time:2018.11.05
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

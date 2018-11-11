@@ -1,12 +1,14 @@
 /*
 *Name:multithread_server.c
 *
-*Function:Use Thread-Specific Data to solve the safe problem of multithread.
+*Function:Use Thread-Specific Data to solve the safe problem of multithread. This server 
+*can connect serveral client at the same time and send the reverse string to client.
 *
-*Athor:weekdawn
+*Author:weekdawn
 *
 *Time:2018.11.09 17:20
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

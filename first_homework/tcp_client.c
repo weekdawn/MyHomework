@@ -1,3 +1,13 @@
+/*
+*Name:tcp_client.c
+*
+*Function:As a simple tcp client, read ip from command line, and connect to the server.
+*
+*Author:weekdawn
+*
+*Time:2018.11.05
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
